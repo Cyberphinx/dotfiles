@@ -1,0 +1,13 @@
+import = ["~/.config/alacritty/themes/themes/blood_moon.toml"]
+
+[font]
+size = 15.0
+offset.x = 0
+offset.y = 5
+
+[font.normal]
+family = "AnonymicePro Nerd Font Mono"
+style = "Regular"
+
+[keyboard]
+bindings = [{ key = "F11", action = "ToggleFullscreen" }]

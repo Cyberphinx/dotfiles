@@ -11,8 +11,7 @@
 !alacritty
 !efm-langserver
 !phpactor
-!.ignore
 
 # Ignore specific files and subdirectories within the whitelisted directories
-# helix/runtime
+helix/runtime
 alacritty/themes
