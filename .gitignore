@@ -5,13 +5,14 @@
 !.gitignore
 !README.md
 !helix/
-!nvim/
-!fish/
-!zellij/
-!alacritty/
-!efm-langserver/
-!phpactor/
+!helix/**
+!nvim
+!fish
+!zellij
+!alacritty
+!efm-langserver
+!phpactor
 
 # Ignore specific files and subdirectories within the whitelisted directories
-helix/runtime/
-alacritty/themes/
+helix/runtime
+alacritty/themes
