@@ -1,19 +1,2 @@
-# Ignore everything
-/*
-
-# Whitelist specific files and directories
-!.gitignore
-!README.md
-!helix
-!nvim
-!fish
-!omf
-!zellij
-!alacritty
-!efm-langserver
-!phpactor
-!.ignore
-
-# Ignore specific files and subdirectories within the whitelisted directories
 helix/runtime
 alacritty/themes
