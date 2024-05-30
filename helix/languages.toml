@@ -137,12 +137,12 @@ shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 comment-token = "//"
 language-servers = [
-  # "deno-lsp",
+  "deno-lsp",
   "typescript-language-server",
   "eslint",
   "emmet-ls",
 ]
-indent = { tab-width = 4, unit = "    " }
+indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "js"] }
 auto-format = true
 
@@ -156,7 +156,7 @@ shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 comment-token = "//"
 language-servers = ["deno-lsp", "eslint", "emmet-ls", "tailwindcss-ls"]
-indent = { tab-width = 4, unit = "    " }
+indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "jsx"] }
 auto-format = true
 
@@ -170,12 +170,12 @@ shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 comment-token = "//"
 language-servers = [
-  # "deno-lsp",
+  "deno-lsp",
   "typescript-language-server",
   "eslint",
   "emmet-ls",
 ]
-indent = { tab-width = 4, unit = "    " }
+indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "ts"] }
 auto-format = true
 
@@ -189,14 +189,22 @@ shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 comment-token = "//"
 language-servers = ["deno-lsp", "eslint", "emmet-ls", "tailwindcss-ls"]
-indent = { tab-width = 4, unit = "    " }
+indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "tsx"] }
 auto-format = true
 
 [[language]]
 name = "json"
-formatter = { command = "deno", args = ["fmt", "-", "--ext", "json"] }
-indent = { tab-width = 4, unit = "    " }
+file-types = ["json"]
+formatter = { command = "deno", args = ["fmt", "--ext", "json", "-"] }
+indent = { tab-width = 2, unit = "  " }
+auto-format = true
+
+[[language]]
+name = "jsonc"
+file-types = ["jsonc"]
+formatter = { command = "deno", args = ["fmt", "--ext", "jsonc", "-"] }
+indent = { tab-width = 2, unit = "  " }
 auto-format = true
 
 [[language]]
@@ -235,9 +243,11 @@ auto-format = true
 
 [[language]]
 name = "markdown"
+file-types = ["md"]
+formatter = { command = "deno", args = ["fmt", "--ext", "md", "-"] }
+# formatter = { command = "dprint", args = ["fmt", "--stdin", "markdown"] }
+indent = { tab-width = 2, unit = "  " }
 auto-format = true
-formatter = { command = "dprint", args = ["fmt", "--stdin", "markdown"] }
-indent = { tab-width = 4, unit = "    " }
 
 [[language]]
 name = "bash"
