@@ -142,8 +142,8 @@ language-servers = [
   "eslint",
   "emmet-ls",
 ]
-indent = { tab-width = 2, unit = "  " }
-formatter = { command = "dprint", args = ["fmt", "--stdin", "javascript"] }
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = "deno", args = ["fmt", "-", "--ext", "js"] }
 auto-format = true
 
 [[language]]
@@ -156,8 +156,8 @@ shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 comment-token = "//"
 language-servers = ["deno-lsp", "eslint", "emmet-ls", "tailwindcss-ls"]
-indent = { tab-width = 2, unit = "  " }
-formatter = { command = "dprint", args = ["fmt", "--stdin", "jsx"] }
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = "deno", args = ["fmt", "-", "--ext", "jsx"] }
 auto-format = true
 
 [[language]]
@@ -175,8 +175,8 @@ language-servers = [
   "eslint",
   "emmet-ls",
 ]
-indent = { tab-width = 2, unit = "  " }
-formatter = { command = "dprint", args = ["fmt", "--stdin", "typescript"] }
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = "deno", args = ["fmt", "-", "--ext", "ts"] }
 auto-format = true
 
 [[language]]
@@ -189,13 +189,13 @@ shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 comment-token = "//"
 language-servers = ["deno-lsp", "eslint", "emmet-ls", "tailwindcss-ls"]
-indent = { tab-width = 2, unit = "  " }
-formatter = { command = "dprint", args = ["fmt", "--stdin", "tsx"] }
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = "deno", args = ["fmt", "-", "--ext", "tsx"] }
 auto-format = true
 
 [[language]]
 name = "json"
-formatter = { command = "dprint", args = ["fmt", "--stdin", "json"] }
+formatter = { command = "deno", args = ["fmt", "-", "--ext", "json"] }
 indent = { tab-width = 4, unit = "    " }
 auto-format = true
 
