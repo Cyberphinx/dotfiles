@@ -137,10 +137,11 @@ shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 comment-token = "//"
 language-servers = [
-  "deno-lsp",
+  # { name = "deno-lsp", except-features = ["diagnostics"] },
+  # "deno-lsp",
   "typescript-language-server",
   "eslint",
-  "emmet-ls",
+  { name = "emmet-ls", except-features = ["code-action"] },
 ]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "js"] }
@@ -155,7 +156,14 @@ file-types = ["jsx"]
 shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 comment-token = "//"
-language-servers = ["deno-lsp", "eslint", "emmet-ls", "tailwindcss-ls"]
+language-servers = [
+  # { name = "deno-lsp", except-features = ["diagnostics"] },
+  #"deno-lsp", 
+  "typescript-language-server",
+  "eslint",
+  { name = "emmet-ls", except-features = ["code-action"] },
+  "tailwindcss-ls",
+]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "jsx"] }
 auto-format = true
@@ -170,7 +178,7 @@ shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 comment-token = "//"
 language-servers = [
-  "deno-lsp",
+  # "deno-lsp",
   "typescript-language-server",
   "eslint",
   "emmet-ls",
@@ -188,7 +196,13 @@ file-types = ["tsx"]
 shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 comment-token = "//"
-language-servers = ["deno-lsp", "eslint", "emmet-ls", "tailwindcss-ls"]
+language-servers = [
+  #"deno-lsp", 
+  "typescript-language-server",
+  "eslint",
+  "emmet-ls",
+  "tailwindcss-ls",
+]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "tsx"] }
 auto-format = true
