@@ -137,10 +137,7 @@ shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 comment-token = "//"
 language-servers = [
-<<<<<<< Updated upstream
   # { name = "deno-lsp", except-features = ["diagnostics"] },
-=======
->>>>>>> Stashed changes
   # "deno-lsp",
   "typescript-language-server",
   "eslint",
@@ -160,19 +157,12 @@ shebangs = ["deno", "node"]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 comment-token = "//"
 language-servers = [
-<<<<<<< Updated upstream
   # { name = "deno-lsp", except-features = ["diagnostics"] },
   #"deno-lsp", 
   "typescript-language-server",
   "eslint",
   { name = "emmet-ls", except-features = ["code-action"] },
   "tailwindcss-ls",
-=======
-  # "deno-lsp", 
-  "eslint", 
-  "emmet-ls", 
-  "tailwindcss-ls"
->>>>>>> Stashed changes
 ]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "jsx"] }
@@ -208,16 +198,10 @@ roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 comment-token = "//"
 language-servers = [
   #"deno-lsp", 
-<<<<<<< Updated upstream
   "typescript-language-server",
   "eslint",
   "emmet-ls",
   "tailwindcss-ls",
-=======
-  "eslint", 
-  "emmet-ls", 
-  "tailwindcss-ls"
->>>>>>> Stashed changes
 ]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "tsx"] }
