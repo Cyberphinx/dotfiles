@@ -27,4 +27,6 @@ if status is-interactive
     # set -gx PATH $PATH /home/vampire/.nvm/versions/node/v21.4.0/bin
     set -x DENO_INSTALL /home/vampire/.deno
     set -x PATH $DENO_INSTALL/bin $PATH
+
+    alias p="pass show ldapass | wl-copy"
 end
