@@ -258,12 +258,12 @@ auto-format = true
 [language-server.ltex]
 command = "ltex-ls"
 [language-server.ltex.config.ltex.dictionary]
-"en-US" = ["ewwe","flaberrasted"]
+"en-US" = ["ewwe", "flaberrasted"]
 
 [[language]]
 name = "markdown"
 file-types = ["md"]
-language-servers = [ "marksman", "ltex-ls" ]
+language-servers = ["marksman", "ltex-ls"]
 formatter = { command = "deno", args = ["fmt", "--ext", "md", "-"] }
 # formatter = { command = "dprint", args = ["fmt", "--stdin", "markdown"] }
 indent = { tab-width = 2, unit = "  " }

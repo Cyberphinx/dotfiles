@@ -30,5 +30,18 @@ if status is-interactive
     set -x DENO_INSTALL /home/vampire/.deno
     set -x PATH $DENO_INSTALL/bin $PATH
 
-    alias p="pass show ldapass | wl-copy"
+    # Detect if running under Wayland or X11
+    if test -n "$XDG_SESSION_TYPE"
+        switch $XDG_SESSION_TYPE
+            case wayland
+                # Define alias for Wayland
+                alias p="pass show ldapass | wl-copy"
+            case x11
+                # Define alias for X11
+                alias p="pass show ldapass | xclip -selection clipboard"
+        end
+    else
+        echo "Could not determine display server."
+    end
+
 end
