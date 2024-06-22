@@ -36,9 +36,11 @@ if status is-interactive
             case wayland
                 # Define alias for Wayland
                 alias p="pass show ldapass | wl-copy"
+                alias s="pass show sdxpass | wl-copy"
             case x11
                 # Define alias for X11
                 alias p="pass show ldapass | xclip -selection clipboard"
+                alias s="pass show sdxpass | xclip -selection clipboard"
         end
     else
         echo "Could not determine display server."
