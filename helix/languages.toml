@@ -309,3 +309,8 @@ language-servers = ["godot"]
 auto-format = true
 file-types = ["gd"]
 formatter = { command = "gdformat" }
+
+[[language]]
+name = "python"
+auto-format = true
+indent = { tab-width = 4, unit = "    " }
