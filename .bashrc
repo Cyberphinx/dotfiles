@@ -32,9 +32,6 @@ unset rc
 export FLYCTL_INSTALL="$HOME/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
-# Add cargo to path
-. "$HOME/.cargo/env"
-
 # Add nvm to path
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

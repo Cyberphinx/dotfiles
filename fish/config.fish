@@ -17,17 +17,17 @@ if status is-interactive
     fish_add_path ~/.cargo/bin
     fish_add_path ~/.fly/bin
     fish_add_path ~/.bun/bin
-    fish_add_path /home/vampire/.nvm/versions/node/v21.4.0/bin
-    fish_add_path /home/vampire/.config/composer/vendor/bin
+    fish_add_path $HOME/.nvm/versions/node/v21.4.0/bin
+    fish_add_path $HOME/.nvm/versions/node/v22.5.0/bin
+    fish_add_path $HOME/.config/composer/vendor/bin
 
-    set -x DPRINT_INSTALL "/home/vampire/.dprint"
+    set -x DPRINT_INSTALL "$HOME/.dprint"
     set -x PATH "$DPRINT_INSTALL/bin" $PATH
     set -gx PATH $PATH /usr/bin/node
     set -x PATH $PATH $HOME/go/bin
     set -gx PATH $HOME/.local/share/lua-language-server/bin $PATH
-    set -gx PATH $PATH /home/vampire/.local/share/bob/nvim-bin
-    # set -gx PATH $PATH /home/vampire/.nvm/versions/node/v21.4.0/bin
-    set -x DENO_INSTALL /home/vampire/.deno
+    set -gx PATH $PATH $HOME/.local/share/bob/nvim-bin
+    set -x DENO_INSTALL $HOME/.deno
     set -x PATH $DENO_INSTALL/bin $PATH
 
     # Detect if running under Wayland or X11
