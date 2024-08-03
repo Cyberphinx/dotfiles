@@ -24,6 +24,9 @@ CONKY=~/.config/conky
 PHPACTOR_SOURCE=~/dotfiles/phpactor
 PHPACTOR=~/.config/phpactor
 
+SNAP_SOURCE=/var/lib/snapd/snap
+SNAP=/snap
+
 # Function to create symlink if it doesn't exist
 create_symlink() {
     local source=$1
@@ -55,12 +58,15 @@ mkdir -p ~/.config
 
 echo "Install dependencies"
 sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++ perl-core openssl-devel
+
 echo "Install utilities"
-sudo dnf install -y keepassxc syncthing golang fish npm util-linux-user helix python3 python3-pip
+sudo dnf install -y keepassxc syncthing golang fish npm util-linux-user helix python3 python3-pip snapd
+
+create_symlink "$SNAP_SOURCE" "$SNAP"
 
 echo "Install python development tools"
 python3 --version
-sudo dnf install python3-devel zlib-devel bzip2-devel sqlite-devel libffi-devel
+sudo dnf install -y python3-devel zlib-devel bzip2-devel sqlite-devel libffi-devel
 
 echo "Upgrade python3 pip"
 pip3 install --upgrade pip
@@ -152,11 +158,11 @@ npm i -g @tailwindcss/language-server
 echo "Install TOML language server"
 cargo install taplo-cli --locked --features lsp
 
-echo "Install markdown language servers"
-sudo snap install marksman
+# echo "Install markdown language servers"
+# sudo snap install marksman
 
-echo "Install ltex language server for spellcheck"
-pip install ltex-ls
+# echo "Install ltex language server for spellcheck"
+# pip install ltex-ls
 
 echo "Installation complete. Please restart your terminal."
 
