@@ -57,7 +57,7 @@ echo "Ensure the ~/.config directory exists"
 mkdir -p ~/.config
 
 echo "Install dependencies"
-sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++ perl-core openssl-devel
+sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++ perl-core openssl-devel java-11-openjdk
 
 echo "Install utilities"
 sudo dnf install -y keepassxc syncthing golang fish npm util-linux-user helix python3 python3-pip snapd
@@ -158,11 +158,16 @@ npm i -g @tailwindcss/language-server
 echo "Install TOML language server"
 cargo install taplo-cli --locked --features lsp
 
-# echo "Install markdown language servers"
-# sudo snap install marksman
+echo "Install markdown language servers"
+sudo snap install marksman
 
-# echo "Install ltex language server for spellcheck"
-# pip install ltex-ls
+echo "Install ltex language server for spellcheck"
+cd ~/Downloads
+wget https://github.com/valentjn/ltex-ls/releases/download/16.0.0/ltex-ls-16.0.0-linux-x64.tar.gz
+sudo su
+mkdir /opt/ltex-ls
+tar -xzf ltex-ls-16.0.0-linux-x64.tar.gz -C /opt/ltex-ls
+exit
 
 echo "Installation complete. Please restart your terminal."
 

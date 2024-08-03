@@ -13,6 +13,7 @@ if status is-interactive
 
     fish_add_path /usr/local/bin
     fish_add_path /opt/godot/
+    fish_add_path /opt/ltex-ls/bin
     fish_add_path ~/.local/bin
     fish_add_path ~/.cargo/bin
     fish_add_path ~/.fly/bin
