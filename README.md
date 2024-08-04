@@ -1,15 +1,21 @@
 ### My configuration files
 
-This is the configuration files for my development environment on fedora 39
+This is the configuration files for my development environment on fedora 40 Run
+the ./install.sh to install all required dependencies for setting up the
+terminal, code editor, and language servers.
 
 ### alacritty
 
 version: 0.14 Terminal emulator that uses GPU
 
+### conky
+
+a system monitoring widget and theme
+
 ### efm-langserver
 
-A nice third paty language server that is a good extension of the default ones
-in both helix and nvim.
+A nice third party language server that is a good extension of the default ones
+in both helix and neovim.
 
 ### fish
 
@@ -22,8 +28,8 @@ in both helix and nvim.
 
 ### nvim
 
-- version: 0.10 A beautiful and highly configurable code editor (this is my
-  backup editor for helix)
+- version: 0.10 Neovim A beautiful and highly configurable code editor (this is
+  my backup editor for helix)
 
 ### omf
 
