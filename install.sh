@@ -65,10 +65,10 @@ echo "Ensure the ~/.config directory exists"
 mkdir -p ~/.config
 
 echo "Install dependencies"
-sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++ perl-core openssl-devel java-11-openjdk
+sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++ perl-core openssl-devel java-11-openjdk lua jq curl
 
 echo "Install utilities"
-sudo dnf install -y keepassxc syncthing golang fish npm util-linux-user helix python3 python3-pip snapd
+sudo dnf install -y keepassxc syncthing golang fish npm util-linux-user helix python3 python3-pip snapd conky
 
 echo "Install php utilities"
 sudo dnf install php php-cli php-mbstring php-xml php-json php-curl php-zip
@@ -85,6 +85,7 @@ commands=(
     ["efm-langserver"]="go install github.com/mattn/efm-langserver@latest"
     ["deno"]="curl -fsSL https://deno.land/install.sh | sh"
     ["taplo"]="cargo install taplo-cli --locked --features lsp"
+    ["sqlx"]="cargo install sqlx-cli"
     ["rustc"]="curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh && source \$HOME/.cargo/env"
     ["alacritty"]="cargo install alacritty"
     ["zellij"]="cargo install --locked zellij"
@@ -135,6 +136,7 @@ packages=(
     "sql-language-server"
     "@tailwindcss/language-server"
     "intelephense"
+    "bun"
 )
 
 # Loop through the array and install each package if not already installed
