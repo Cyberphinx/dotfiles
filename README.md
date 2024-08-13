@@ -4,6 +4,10 @@ This is the configuration files for my development environment on fedora 40 Run
 the ./install.sh to install all required dependencies for setting up the
 terminal, code editor, and language servers.
 
+### install.sh
+
+- This bash script automatically installs all required dependencies on Fedora 40
+
 ### alacritty
 
 version: 0.14 Terminal emulator that uses GPU
@@ -19,7 +23,7 @@ in both helix and neovim.
 
 ### fish
 
-- version: 3.7.0 A user friendly shell (an alternative to bash)
+- version: 3.7.0 A user-friendly shell (an alternative to bash)
 
 ### helix
 
@@ -33,7 +37,7 @@ in both helix and neovim.
 
 ### omf
 
-- version: 7 Oh my fish, package manager for fish shell. Expecially useful for
+- version: 7 Oh my fish, package manager for fish shell. Especially useful for
   using nvm with fish shell.
 
 ### phpactor
@@ -42,7 +46,7 @@ in both helix and neovim.
 
 ### zellij
 
-- version: 0.40 Terminal multiplexer that is performant and user friendly
+- version: 0.40 Terminal multiplexer that is performant and user-friendly
 
 ### bashrc
 
