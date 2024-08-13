@@ -42,6 +42,9 @@ display-inlay-hints = true
 # Show LSP messages below statusline
 display-messages = true
 
+[keys.normal.space]
+i = ":toggle lsp.display-inlay-hints"
+
 [editor.whitespace.render]
 space = "all"
 tab = "all"
