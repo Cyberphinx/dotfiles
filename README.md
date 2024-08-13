@@ -10,16 +10,16 @@ terminal, code editor, and language servers.
 
 ### alacritty
 
-version: 0.14 Terminal emulator that uses GPU
+- version: 0.14 Terminal emulator that uses GPU
 
 ### conky
 
-a system monitoring widget and theme
+- a system monitoring widget and theme
 
 ### efm-langserver
 
-A nice third party language server that is a good extension of the default ones
-in both helix and neovim.
+- A nice third party language server that is a good extension of the default
+  ones in both helix and neovim.
 
 ### fish
 
