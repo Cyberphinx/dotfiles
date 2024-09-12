@@ -1,3 +1,6 @@
+# --------------------------------------------------------------------------
+#                                Rust Settings
+# --------------------------------------------------------------------------
 [[language]]
 name = "rust"
 file-types = ["rs"]
@@ -10,6 +13,9 @@ allFeatures = true
 [language-server.rust-analyzer.config.procMacro]
 enable = true
 
+# --------------------------------------------------------------------------
+#                                Svelte Settings
+# --------------------------------------------------------------------------
 [language-server.svelteserver]
 command = "svelteserver"
 args = ["--stdio"]
@@ -21,6 +27,9 @@ auto-format = true
 indent = { tab-width = 2, unit = "  " }
 roots = ["package.json"]
 
+# --------------------------------------------------------------------------
+#                                PHP Settings
+# --------------------------------------------------------------------------
 [language-server.phpactor]
 command = "phpactor"
 args = ["language-server"]
@@ -82,35 +91,51 @@ config = { userLanguages = { php = "html", "*.php" = "html" } }
 command = "emmet-ls"
 args = ["--stdio"]
 
+# --------------------------------------------------------------------------
+#                                ESLint Settings
+# --------------------------------------------------------------------------
 [language-server.eslint]
-command = "vscode-eslint-language-server"
 args = ["--stdio"]
+command = "vscode-eslint-language-server"
 
 [language-server.eslint.config]
-codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
 format = { enable = true }
 nodePath = ""
+# onIgnoredFiles = "off"
+# packageManager = "yarn"
 quiet = false
 rulesCustomizations = []
 run = "onType"
+# useESLintClass = false
 validate = "on"
 experimental = {}
+# codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
 problems = { shortenToSingleLine = false }
+# workingDirectory = { mode = "auto" }
 
 [language-server.eslint.config.codeAction]
 disableRuleComment = { enable = true, location = "separateLine" }
 showDocumentation = { enable = false }
 
+# --------------------------------------------------------------------------
+#                            VSCode JSON Settings
+# --------------------------------------------------------------------------
 [language-server.vscode-json-language-server.config]
 json = { validate = { enable = true }, format = { enable = true } }
 provideFormatter = true
 
+# --------------------------------------------------------------------------
+#                            VSCode CSS Settings
+# --------------------------------------------------------------------------
 [language-server.vscode-css-language-server.config]
 css = { validate = { enable = true } }
 scss = { validate = { enable = true } }
 less = { validate = { enable = true } }
 provideFormatter = true
 
+# --------------------------------------------------------------------------
+#                            Deno LSP Settings
+# --------------------------------------------------------------------------
 [language-server.deno-lsp]
 command = "deno"
 args = ["lsp", "--unstable"]
@@ -127,6 +152,9 @@ inlayHints.propertyDeclarationTypes.enabled = true
 inlayHints.functionLikeReturnTypes.enabled = true
 inlayHints.enumMemberValues.enabled = true
 
+# --------------------------------------------------------------------------
+#                    JavaScript TypeScript JSX TSX Settings
+# --------------------------------------------------------------------------
 [[language]]
 name = "javascript"
 language-id = "javascript"
@@ -141,7 +169,7 @@ language-servers = [
   # "deno-lsp",
   "typescript-language-server",
   "eslint",
-  { name = "emmet-ls", except-features = ["code-action"] },
+  "emmet-ls",
 ]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "js"] }
@@ -207,6 +235,9 @@ indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "tsx"] }
 auto-format = true
 
+# --------------------------------------------------------------------------
+#                    Other Languages Settings
+# --------------------------------------------------------------------------
 [[language]]
 name = "json"
 file-types = ["json"]

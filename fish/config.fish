@@ -22,6 +22,7 @@ if status is-interactive
     fish_add_path $HOME/.nvm/versions/node/v21.4.0/bin
     fish_add_path $HOME/.nvm/versions/node/v22.5.0/bin
     fish_add_path $HOME/.config/composer/vendor/bin
+    fish_add_path ~/.composer/vendor/bin
 
     set -x DPRINT_INSTALL "$HOME/.dprint"
     set -x PATH "$DPRINT_INSTALL/bin" $PATH
