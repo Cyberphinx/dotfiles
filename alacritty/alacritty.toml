@@ -5,6 +5,9 @@ import = ["~/.config/alacritty/themes/themes/blood_moon.toml"]
 TERM = "xterm-256color"
 # TERM = "alacritty"
 
+[window]
+opacity = 0.8
+
 [font]
 size = 15.0
 offset.x = 0
