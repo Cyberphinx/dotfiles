@@ -222,6 +222,9 @@ bindsym $mod+r mode "resize"
 #         status_command i3status
 # }
 
+# Bind Flameshot GUI to the Print key
+bindsym Print exec --no-startup-id flameshot gui
+
 # Catppuccin Mocha color scheme
 set $rosewater #f5e0dc
 set $flamingo  #f2cdcd
