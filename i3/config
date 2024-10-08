@@ -16,14 +16,7 @@ set $mod Mod1
 exec --no-startup-id xset s off -dpms
 
 # Start xrandr configuration
-exec_always --no-startup-id xrandr --output DP-2 --mode 1920x1080 --rotate right
-exec_always --no-startup-id xrandr --output eDP-1 --mode 1920x1080
-exec_always --no-startup-id xrandr --output HDMI-1-0 --mode 2560x1440 --primary
-
-# Start xrandr direction
-exec_always --no-startup-id xrandr --output DP-2 --right-of HDMI-1-0
-exec_always --no-startup-id xrandr --output eDP-1 --left-of DPI-2
-exec_always --no-startup-id xrandr --output DP-1 --below eDP-1
+exec_always --no-startup-id ~/.config/arandr/asus_zenbook.sh 
 
 # Workspace assignments
 workspace 1 output HDMI-1-0
