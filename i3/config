@@ -18,8 +18,8 @@ exec --no-startup-id xset s off -dpms
 # Start xrandr configuration
 exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080
 exec --no-startup-id xrandr --output DP-1 --mode 3840x1100 --below eDP-1
-exec --no-startup-id xrandr --output DP-2 --mode 1920x1080 --rotate right --left-of eDP-1
-exec --no-startup-id xrandr --output HDMI-1-0 --primary --mode 2560x1440 --left-of DP-2
+exec --no-startup-id xrandr --output HDMI-1-0 --mode 1920x1080 --rotate right --left-of eDP-1
+exec --no-startup-id xrandr --output DP-2 --primary --mode 2560x1440 --left-of DP-2
 
 # Workspace assignments
 workspace 1 output HDMI-1-0
