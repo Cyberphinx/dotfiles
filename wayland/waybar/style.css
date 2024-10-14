@@ -1,0 +1,26 @@
+* {
+  font-family: "Fira Code", monospace;
+  font-size: 12px;
+  background: #282c34;
+  color: #abb2bf;
+}
+
+#clock {
+  color: #61afef;
+}
+
+#cpu {
+  color: #e06c75;
+}
+
+#memory {
+  color: #98c379;
+}
+
+#network {
+  color: #56b6c2;
+}
+
+#pulseaudio {
+  color: #c678dd;
+}
