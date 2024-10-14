@@ -1,16 +1,17 @@
 window {
-  font-family: "DejaVu Sans", "Font Awesome 5 Free";
+  font-family: "AnonymicePro Nerd Font Mono", "Font Awesome 5 Free";
+  font-size: 24px;
   margin: 0px;
   border: 1px solid rgba(0, 0, 0, 0.9);
-  background-color: rgba(29, 31, 33, 0.95);
+  background-color: rgba(38, 35, 58, 0.95);
   border-radius: 10px;
 }
 
 #input {
   margin: 5px;
   border: none;
-  color: #f8f8f2;
-  background-color: rgba(55, 59, 65, 0.95);
+  color: #e0def4;
+  background-color: rgba(38, 25, 58, 0.95);
 }
 
 #inner-box,
@@ -28,7 +29,7 @@ window {
 #text {
   margin: 5px;
   border: none;
-  color: #c5c8c6;
+  color: #e0def4;
 }
 
 #entry {

@@ -9,9 +9,6 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod1
 
-# Launch Firefox
-bindsym $mod+c exec firefox
-
 # Workspaces
 workspace 1 output HDMI-A-1
 workspace 2 output DP-2
