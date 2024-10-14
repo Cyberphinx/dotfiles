@@ -1,0 +1,15 @@
+[settings]
+# Set the default mode to 'drun' for launching applications
+mode = drun
+
+# Set the terminal emulator to use when launching terminal applications
+terminal = alacritty
+
+# Enable fuzzy matching for search queries
+fuzzy = true
+
+# Set the number of lines to display in the menu
+lines = 10
+
+# Set the width of the menu
+width = 50%
