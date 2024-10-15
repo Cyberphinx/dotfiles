@@ -256,4 +256,19 @@ bindsym $mod+r mode "resize"
 #    font pango:AnonymicePro Nerd Font Mono 16
 #}
 
+# Set colors for focused windows
+# border background text indicator
+client.focused          #3c3836 #191724 #e0def4 #ebdbb2
+
+# Set colors for unfocused windows
+client.unfocused        #26233a #26233a #e0def4 #e0def4
+
+# Set colors for urgent windows
+client.urgent           #cc241d #eb6f92 #191724 #fbf1c7
+
+# Set colors for placeholder windows
+client.placeholder      #3c3836 #26233a #e0def4 #7c6f64
+
+font pango:AnonymicePro Nerd Font Mono 16
+
 include /etc/sway/config.d/*
