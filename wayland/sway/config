@@ -23,6 +23,10 @@ exec swaybg -i /home/gloversure/Pictures/Wallpapers/wallpaper.jpg -m fill
 # Start waybar
 # exec waybar
 
+# Start notification daemon
+# exec mako
+exec dunst
+
 # Home row direction keys, like vim
 set $left h
 set $down j
