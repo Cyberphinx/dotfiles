@@ -21,7 +21,7 @@ bindsym $mod+space exec $menu
 exec swaybg -i /home/gloversure/Pictures/Wallpapers/wallpaper.jpg -m fill
 
 # Start waybar
-# exec waybar
+exec waybar
 
 # Start notification daemon
 # exec mako
@@ -230,30 +230,30 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position bottom
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
-    colors {
-        background #191724
-        statusline #e0def4
-        separator #6e6a86
-
-        focused_background #26233a
-        focused_statusline #e0def4
-        focused_separator #e0def4
-
-        focused_workspace #31748f #31748f #e0def4
-        active_workspace #eb6f92 #eb6f92 #e0def4
-        inactive_workspace #191724 #191724 #e0def4
-        urgent_workspace #eb6f92 #eb6f92 #e0def4
-        binding_mode #f6c177 #f6c177 #e0def4
-    }
-
-    font pango:AnonymicePro Nerd Font Mono 16
-}
+# bar {
+#    position bottom
+#
+#    # When the status_command prints a new line to stdout, swaybar updates.
+#    # The default just shows the current date and time.
+#    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+#
+#    colors {
+#        background #191724
+#        statusline #e0def4
+#        separator #6e6a86
+#
+#        focused_background #26233a
+#        focused_statusline #e0def4
+#        focused_separator #e0def4
+#
+#        focused_workspace #31748f #31748f #e0def4
+#        active_workspace #eb6f92 #eb6f92 #e0def4
+#        inactive_workspace #191724 #191724 #e0def4
+#        urgent_workspace #eb6f92 #eb6f92 #e0def4
+#        binding_mode #f6c177 #f6c177 #e0def4
+#    }
+#
+#    font pango:AnonymicePro Nerd Font Mono 16
+#}
 
 include /etc/sway/config.d/*
