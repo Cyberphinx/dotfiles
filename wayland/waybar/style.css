@@ -27,7 +27,7 @@ window#waybar {
 #pulseaudio,
 #memory,
 #cpu,
-#battery,
+#temperature,
 #disk,
 #tray {
   background: #191724;

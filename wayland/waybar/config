@@ -33,7 +33,7 @@
 		"cpu",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
-		"battery",
+		"temperature",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"disk",
@@ -105,21 +105,16 @@
 		"interval": 5,
 		"format": "CPU {usage:2}%"
 	},
-	"battery": {
-		"states": {
-			"good": 95,
-			"warning": 30,
-			"critical": 15
-		},
-		"format": "{icon} {capacity}%",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
-		]
-	},
+    "temperature": {
+        "type": "internal/temperature",
+        "interval": 2,
+        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input",
+        "base-temperature": 20,
+        "warn-temperature": 90,
+        "format": "Temp {temperatureC}°C",
+        "format-warn": "Temp {temperatureC}°C",
+        "label-warn-foreground": "#f00"
+    },
 	"disk": {
 		"interval": 5,
 		"format": "Disk {percentage_used:2}%",
