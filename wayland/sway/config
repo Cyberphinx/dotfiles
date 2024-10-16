@@ -18,7 +18,7 @@ set $menu wofi --show run
 bindsym $mod+space exec $menu
 
 # Set wallpaper
-exec swaybg -i /home/gloversure/Pictures/Wallpapers/wallpaper.jpg -m fill
+exec swaybg -i ~/Pictures/Wallpapers/wallpaper.jpg -m fill
 
 # Start waybar
 exec waybar
@@ -26,6 +26,9 @@ exec waybar
 # Start notification daemon
 # exec mako
 exec dunst
+
+# Bind Flameshot GUI to the Print key
+bindsym Print exec ~/.config/slurp/screenshot.sh
 
 # Home row direction keys, like vim
 set $left h
