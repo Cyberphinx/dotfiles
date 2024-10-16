@@ -18,9 +18,6 @@
 		"custom/right-arrow-light",
 		"clock#3",
 		"custom/right-arrow-dark",
-		"custom/right-arrow-light",
-        "clock#seconds",
-		"custom/right-arrow-dark"
 	],
 	"modules-right": [
 		"custom/left-arrow-dark",
@@ -68,18 +65,14 @@
 		"format": "{:%a}",
 		"tooltip": false
 	},
-	"clock#2": {
-		"format": "{:%H:%M}",
-		"tooltip": false
+    "clock#2": {
+		"format": "{:%H:%M:%S}",
+		"tooltip": false,
+		"interval": 1
 	},
 	"clock#3": {
 		"format": "{:%m-%d}",
 		"tooltip": false
-	},
-    "clock#seconds": {
-		"format": "{:%H:%M:%S}",
-		"tooltip": false,
-		"interval": 1
 	},
 
 	"pulseaudio": {
