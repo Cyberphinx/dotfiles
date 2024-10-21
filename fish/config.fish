@@ -3,6 +3,7 @@ if status is-interactive
 
     # Set default editor to helix, eg. crontab -e
     set -gx EDITOR vi
+    alias hx='helix'
 
     # Configure auto-attach/exit to your likings (default is off).
     # set ZELLIJ_AUTO_ATTACH true
