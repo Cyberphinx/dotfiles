@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/themes/themes/rose-pine.toml"]
+general.import = ["~/.config/alacritty/themes/themes/rose-pine.toml"]
 
 [env]
 # to be compatible with legacy machines
@@ -24,6 +24,6 @@ bindings = [{ key = "F11", action = "ToggleFullscreen" }]
 style = { shape = "Beam", blinking = "On" }
 vi_mode_style = { shape = "Block", blinking = "Off" }
 
-[shell]
+[terminal.shell]
 program = "zellij"
 args = ["-l", "welcome"]
