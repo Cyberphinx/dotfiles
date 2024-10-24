@@ -51,3 +51,16 @@ terminal, code editor, and language servers.
 ### bashrc
 
 - Bash terminal configuration and PATH
+
+### VPN files .ovpn
+
+- After added the vpn file via
+  `nmcli connection import type openvpn file /path/to/your/file.ovpn`, you need
+  to configure the username and password to a file saved at
+  /etc/NetworkManager/system-connections:
+
+```
+nmcli connection modify <connection-name> +vpn.data "connection-type=password-tls, username=YOUR_USERNAME" vpn.user-name YOUR_USERNAME +vpn.secrets "password=YOUR_PASSWORD"
+```
+
+- And then you must re-login/restart pc for the new vpn to take effect
