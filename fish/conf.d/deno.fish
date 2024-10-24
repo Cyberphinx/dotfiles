@@ -1,0 +1,1 @@
+source "/home/cyberphinx/.deno/env.fish"
