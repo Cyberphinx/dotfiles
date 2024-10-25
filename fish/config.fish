@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 
     # Set default editor to helix, eg. crontab -e
-    set -gx EDITOR vi
+    set -gx EDITOR vim
     alias hx='helix'
 
     # Configure auto-attach/exit to your likings (default is off).
