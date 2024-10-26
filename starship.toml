@@ -1,0 +1,14 @@
+# Example configuration for Starship
+add_newline = true
+
+[directory]
+truncation_length = 3
+
+[git_branch]
+symbol = "🌿 "
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[nodejs]
+format = "via [⬢ $version](bold green) "
