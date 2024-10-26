@@ -15,9 +15,6 @@ ZELLIJ=~/.config/zellij
 FISH_SOURCE=~/dotfiles/fish
 FISH=~/.config/fish
 
-OMF_SOURCE=~/dotfiles/omf
-OMF=~/.config/omf
-
 EFM_SOURCE=~/dotfiles/efm-langserver
 EFM=~/.config/efm-langserver
 
@@ -48,7 +45,6 @@ create_symlink "$HELIX_SOURCE" "$HELIX"
 create_symlink "$ALACRITTY_SOURCE" "$ALACRITTY"
 create_symlink "$ZELLIJ_SOURCE" "$ZELLIJ"
 create_symlink "$FISH_SOURCE" "$FISH"
-create_symlink "$OMF_SOURCE" "$OMF"
 create_symlink "$EFM_SOURCE" "$EFM"
 create_symlink "$CONKY_SOURCE" "$CONKY"
 create_symlink "$PHPACTOR_SOURCE" "$PHPACTOR"
@@ -98,6 +94,7 @@ commands=(
     ["taplo"]="cargo install taplo-cli --locked --features lsp"
     ["composer"]="php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\" && php -r \"if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;\" && sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer && php -r \"unlink('composer-setup.php');\""
     ["phpcs"]="composer global require \"squizlabs/php_codesniffer=*\""
+    ["fisher"]="curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 )
 
 # Loop through the array and install each command if not already installed

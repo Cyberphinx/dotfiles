@@ -15,9 +15,6 @@ ZELLIJ=~/.config/zellij
 FISH_SOURCE=~/dotfiles/fish
 FISH=~/.config/fish
 
-OMF_SOURCE=~/dotfiles/omf
-OMF=~/.config/omf
-
 EFM_SOURCE=~/dotfiles/efm-langserver
 EFM=~/.config/efm-langserver
 
@@ -48,7 +45,6 @@ create_symlink "$HELIX_SOURCE" "$HELIX"
 create_symlink "$ALACRITTY_SOURCE" "$ALACRITTY"
 create_symlink "$ZELLIJ_SOURCE" "$ZELLIJ"
 create_symlink "$FISH_SOURCE" "$FISH"
-create_symlink "$OMF_SOURCE" "$OMF"
 create_symlink "$EFM_SOURCE" "$EFM"
 create_symlink "$CONKY_SOURCE" "$CONKY"
 create_symlink "$PHPACTOR_SOURCE" "$PHPACTOR"
@@ -78,7 +74,7 @@ if [ ! -d "$HOME/.config" ]; then
 fi
 
 echo "Install dependencies"
-dependencies=(cmake freetype2 fontconfig libxcb libxkbcommon gcc perl openssl jdk11-openjdk lua jq curl unzip rustup networkmanager-openvpn)
+dependencies=(cmake freetype2 fontconfig libxcb libxkbcommon gcc perl openssl jdk11-openjdk lua jq curl unzip rustup networkmanager-openvpn starship)
 for package in "${dependencies[@]}"; do
     if ! pacman -Qi $package &>/dev/null; then
         sudo pacman -S --noconfirm $package
@@ -149,16 +145,13 @@ commands=(
     ["taplo"]="cargo install taplo-cli --locked --features lsp"
     ["sqlx"]="cargo install sqlx-cli"
     ["rustc"]="curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh && source \$HOME/.cargo/env"
-    # Alacritty and zellij is installed via yay
-    # ["alacritty"]="cargo install alacritty"
-    # ["zellij"]="cargo install --locked zellij"
     ["rust-analyzer"]="rustup component add rust-analyzer"
     ["nvm"]="curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash && export NVM_DIR=\"\$([ -z \"\${XDG_CONFIG_HOME-}\" ] && printf %s \"\${HOME}/.nvm\" || printf %s \"\${XDG_CONFIG_HOME}/nvm\")\" && [ -s \"\$NVM_DIR/nvm.sh\" ] && \. \"\$NVM_DIR/nvm.sh\""
     ["node"]="nvm install node"
-    ["omf"]="curl -L https://get.oh-my.fish | fish"
     ["composer"]="php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\" && php -r \"if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;\" && sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer && php -r \"unlink('composer-setup.php');\""
     ["phpcs"]="composer global require \"squizlabs/php_codesniffer=*\""
     ["marksman"]="yay -S marksman-bin"
+    ["fisher"]="curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 )
 
 # Log file for errors
@@ -218,12 +211,6 @@ for package in "${packages[@]}"; do
     fi
 done
 
-# echo "Upgrade python3 pip"
-# pip3 install --upgrade pip
-
-# echo "Install python language server pylsp"
-# pip install -U 'python-lsp-server[all]'
-
 # Set fish as the default shell
 if [ "$SHELL" = "/usr/bin/fish" ]; then
     echo "Fish is already the default shell. Skipping setting default shell."
@@ -275,4 +262,4 @@ else
     mv phpactor.phar ~/.local/bin/phpactor
 fi
 
-echo "Installation complete. Please restart your terminal."
+echo "Installation complete. Please restart your terminal. Don't forget to run `fisher install jorgebucaran/nvm.fish` to install nvm for fish shell."
