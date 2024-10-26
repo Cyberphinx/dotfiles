@@ -1,1 +1,1 @@
-source "/home/cyberphinx/.deno/env.fish"
+source ~/.deno/env.fish
