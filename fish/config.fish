@@ -5,13 +5,6 @@ if status is-interactive
     set -gx EDITOR vim
     alias hx='helix'
 
-    # Configure auto-attach/exit to your likings (default is off).
-    # set ZELLIJ_AUTO_ATTACH true
-    # set ZELLIJ_AUTO_EXIT true
-    # eval (zellij setup --generate-auto-start fish | string collect)
-    # Add ~/.cargo/bin to PATH only for interactive sessions
-    # set -gx PATH $PATH ~/.cargo/bin
-
     fish_add_path /usr/local/bin
     fish_add_path /usr/local/go/bin
     fish_add_path /opt/godot/
@@ -49,5 +42,23 @@ if status is-interactive
     else
         echo "Could not determine display server."
     end
+
+    # Check if ssh-agent is running 
+    # if not pgrep -f ssh-agent >/dev/null
+    #     # Start ssh-agent
+    #     eval (ssh-agent -c)
+    #     set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+    #     set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+    # end
+    # Check if SSH_AGENT_PID is set
+    if not set -q SSH_AGENT_PID
+        # Start ssh-agent and set environment variables
+        eval (ssh-agent -c)
+        set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+        set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+    end
+
+    # Add SSH key to the agent (let ssh-agent to cache the passphrase for git)
+    ssh-add ~/.ssh/id_ed25519
 
 end
