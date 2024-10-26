@@ -43,22 +43,7 @@ if status is-interactive
         echo "Could not determine display server."
     end
 
-    # Check if ssh-agent is running 
-    # if not pgrep -f ssh-agent >/dev/null
-    #     # Start ssh-agent
-    #     eval (ssh-agent -c)
-    #     set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
-    #     set -Ux SSH_AGENT_PID $SSH_AGENT_PID
-    # end
-    # Check if SSH_AGENT_PID is set
-    if not set -q SSH_AGENT_PID
-        # Start ssh-agent and set environment variables
-        eval (ssh-agent -c)
-        set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
-        set -Ux SSH_AGENT_PID $SSH_AGENT_PID
-    end
-
-    # Add SSH key to the agent (let ssh-agent to cache the passphrase for git)
-    ssh-add ~/.ssh/id_ed25519
+    # Start starship shell prompt
+    starship init fish | source
 
 end
