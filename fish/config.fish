@@ -4,13 +4,6 @@ if status is-interactive
     # Set default editor to helix, eg. crontab -e
     set -gx EDITOR vi
 
-    # Configure auto-attach/exit to your likings (default is off).
-    # set ZELLIJ_AUTO_ATTACH true
-    # set ZELLIJ_AUTO_EXIT true
-    # eval (zellij setup --generate-auto-start fish | string collect)
-    # Add ~/.cargo/bin to PATH only for interactive sessions
-    # set -gx PATH $PATH ~/.cargo/bin
-
     fish_add_path /usr/local/bin
     fish_add_path /usr/local/go/bin
     fish_add_path /opt/godot/
