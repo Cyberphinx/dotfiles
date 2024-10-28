@@ -42,4 +42,6 @@ if status is-interactive
         echo "Could not determine display server."
     end
 
+    # Initialize starship prompt
+    starship init fish | source
 end
