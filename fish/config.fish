@@ -5,13 +5,6 @@ if status is-interactive
     set -gx EDITOR vim
     alias hx='helix'
 
-    # Configure auto-attach/exit to your likings (default is off).
-    # set ZELLIJ_AUTO_ATTACH true
-    # set ZELLIJ_AUTO_EXIT true
-    # eval (zellij setup --generate-auto-start fish | string collect)
-    # Add ~/.cargo/bin to PATH only for interactive sessions
-    # set -gx PATH $PATH ~/.cargo/bin
-
     fish_add_path /usr/local/bin
     fish_add_path /usr/local/go/bin
     fish_add_path /opt/godot/
@@ -33,21 +26,5 @@ if status is-interactive
     set -gx PATH $PATH $HOME/.local/share/bob/nvim-bin
     set -x DENO_INSTALL $HOME/.deno
     set -x PATH $DENO_INSTALL/bin $PATH
-
-    # Detect if running under Wayland or X11
-    if test -n "$XDG_SESSION_TYPE"
-        switch $XDG_SESSION_TYPE
-            case wayland
-                # Define alias for Wayland
-                alias p="pass show ldapass | wl-copy"
-                alias s="pass show sdxpass | wl-copy"
-            case x11
-                # Define alias for X11
-                alias p="pass show ldapass | xclip -selection clipboard"
-                alias s="pass show sdxpass | xclip -selection clipboard"
-        end
-    else
-        echo "Could not determine display server."
-    end
 
 end
