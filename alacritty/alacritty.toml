@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/themes/themes/rose-pine.toml"]
+general.import = ["~/.config/alacritty/themes/themes/rose-pine.toml"]
 
 [env]
 # to be compatible with legacy machines
@@ -9,13 +9,12 @@ TERM = "xterm-256color"
 opacity = 1
 
 [font]
-size = 15.0
+size = 15
 offset.x = 0
-offset.y = 5
-
-[font.normal]
-family = "AnonymicePro Nerd Font Mono"
-style = "Regular"
+offset.y = 3
+normal = { family = "AnonymicePro Nerd Font Mono", style = "Regular" }
+bold = { family = "AnonymicePro Nerd Font Mono", style = "Bold" }
+italic = { family = "AnonymicePro Nerd Font Mono", style = "Italic" }
 
 [keyboard]
 bindings = [{ key = "F11", action = "ToggleFullscreen" }]
@@ -23,3 +22,7 @@ bindings = [{ key = "F11", action = "ToggleFullscreen" }]
 [cursor]
 style = { shape = "Beam", blinking = "On" }
 vi_mode_style = { shape = "Block", blinking = "Off" }
+
+[terminal.shell]
+program = "zellij"
+args = ["-l", "welcome"]
