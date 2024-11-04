@@ -18,7 +18,8 @@ set $menu wofi --show run
 bindsym $mod+space exec $menu
 
 # Set wallpaper
-exec swaybg -i ~/Pictures/Wallpapers/wallpaper.jpg -m fill
+# exec swaybg -i ~/Pictures/Wallpapers/wallpaper.jpg -m fill
+exec swaybg -o DP-2 -i ~/Pictures/Wallpapers/wallpaper.jpg -m fill -o HDMI-A-1 -i ~/Pictures/Wallpapers/wallpaper.jpg -m fill
 
 # Start waybar
 exec waybar
