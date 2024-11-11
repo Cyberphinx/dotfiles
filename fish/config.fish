@@ -2,7 +2,8 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 
     # Set default editor to helix, eg. crontab -e
-    set -gx EDITOR vi
+    set -gx EDITOR vim
+    alias hx='helix'
 
     fish_add_path /usr/local/bin
     fish_add_path /usr/local/go/bin
@@ -42,6 +43,7 @@ if status is-interactive
         echo "Could not determine display server."
     end
 
-    # Initialize starship prompt
+    # Start starship shell prompt
     starship init fish | source
+
 end

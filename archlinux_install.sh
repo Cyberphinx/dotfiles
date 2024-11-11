@@ -24,8 +24,8 @@ CONKY=~/.config/conky
 PHPACTOR_SOURCE=~/dotfiles/phpactor
 PHPACTOR=~/.config/phpactor
 
-SNAP_SOURCE=/var/lib/snapd/snap
-SNAP=/snap
+# SNAP_SOURCE=/var/lib/snapd/snap
+# SNAP=/snap
 
 # Function to create symlink if it doesn't exist
 create_symlink() {
@@ -54,26 +54,88 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+# Ensure yay is installed
+if ! command_exists yay; then
+    echo "Installing yay..."
+    sudo pacman -S --needed --noconfirm base-devel git
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+    cd ..
+    rm -rf yay
+fi
+
 echo "Updating the system"
-sudo dnf update -y
+sudo pacman -Syu --noconfirm
 
 echo "Ensure the ~/.config directory exists"
-mkdir -p ~/.config
+if [ ! -d "$HOME/.config" ]; then
+    mkdir -p "$HOME/.config"
+fi
 
 echo "Install dependencies"
-sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++ perl-core openssl-devel java-11-openjdk lua jq curl
+dependencies=(cmake freetype2 fontconfig libxcb libxkbcommon gcc perl openssl jdk11-openjdk lua jq curl unzip rustup networkmanager-openvpn starship)
+for package in "${dependencies[@]}"; do
+    if ! pacman -Qi $package &>/dev/null; then
+        sudo pacman -S --noconfirm $package
+    else
+        echo "$package is already installed"
+    fi
+done
+
+echo "Initialize rustup"
+if command -v rustup &>/dev/null; then
+    rustup default stable
+    rustup --version
+    rustc --version
+else
+    echo "rustup is not installed"
+fi
 
 echo "Install utilities"
-sudo dnf install -y keepassxc syncthing golang fish npm util-linux-user helix python3 python3-pip snapd conky
+utilities=(keepassxc syncthing go fish npm util-linux helix python python-pip conky)
+for utility in "${utilities[@]}"; do
+    if ! pacman -Qi $utility &>/dev/null; then
+        sudo pacman -S --noconfirm $utility
+    else
+        echo "$utility is already installed"
+    fi
+done
 
-echo "Install php utilities"
-sudo dnf install php php-cli php-mbstring php-xml php-json php-curl php-zip
-
-# create_symlink "$SNAP_SOURCE" "$SNAP"
+echo "Install PHP and some common extensions"
+php_packages=(php php-gd php-intl)
+for php_package in "${php_packages[@]}"; do
+    if ! pacman -Qi $php_package &>/dev/null; then
+        sudo pacman -S --noconfirm $php_package
+    else
+        echo "$php_package is already installed"
+    fi
+done
 
 echo "Install python development tools"
-python3 --version
-sudo dnf install -y python3-devel zlib-devel bzip2-devel sqlite-devel libffi-devel
+python_tools=(python python-pip python-virtualenv)
+for tool in "${python_tools[@]}"; do
+    if ! pacman -Qi $tool &>/dev/null; then
+        sudo pacman -S --noconfirm $tool
+    else
+        echo "$tool is already installed"
+    fi
+done
+
+echo "Reinstall the libraries to ensure they are up to date with python"
+libraries=(zlib bzip2 sqlite libffi)
+for library in "${libraries[@]}"; do
+    if ! pacman -Qi $library &>/dev/null; then
+        sudo pacman -S --noconfirm $library
+    else
+        echo "$library is already installed"
+    fi
+done
+
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
 
 # Array of commands and their installation commands
 declare -A commands
@@ -83,19 +145,17 @@ commands=(
     ["taplo"]="cargo install taplo-cli --locked --features lsp"
     ["sqlx"]="cargo install sqlx-cli"
     ["rustc"]="curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh && source \$HOME/.cargo/env"
-    ["alacritty"]="cargo install alacritty"
-    ["zellij"]="cargo install --locked zellij"
     ["rust-analyzer"]="rustup component add rust-analyzer"
     ["nvm"]="curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash && export NVM_DIR=\"\$([ -z \"\${XDG_CONFIG_HOME-}\" ] && printf %s \"\${HOME}/.nvm\" || printf %s \"\${XDG_CONFIG_HOME}/nvm\")\" && [ -s \"\$NVM_DIR/nvm.sh\" ] && \. \"\$NVM_DIR/nvm.sh\""
     ["node"]="nvm install node"
-    ["omf"]="curl -L https://get.oh-my.fish | fish"
-    ["efm-langserver"]="go install github.com/mattn/efm-langserver@latest"
-    ["deno"]="curl -fsSL https://deno.land/install.sh | sh"
-    ["taplo"]="cargo install taplo-cli --locked --features lsp"
     ["composer"]="php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\" && php -r \"if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;\" && sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer && php -r \"unlink('composer-setup.php');\""
     ["phpcs"]="composer global require \"squizlabs/php_codesniffer=*\""
+    ["marksman"]="yay -S marksman-bin"
     ["fisher"]="curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 )
+
+# Log file for errors
+LOG_FILE="install_errors.log"
 
 # Loop through the array and install each command if not already installed
 for cmd in "${!commands[@]}"; do
@@ -103,7 +163,10 @@ for cmd in "${!commands[@]}"; do
         echo "$cmd is already installed. Skipping installation."
     else
         echo "Installing $cmd..."
-        eval "${commands[$cmd]}"
+        eval "${commands[$cmd]}" || {
+            echo "Failed to install $cmd. Check $LOG_FILE for details."
+            echo "[$(date)] Failed to install $cmd" >> "$LOG_FILE"
+        }
     fi
 done
 
@@ -117,6 +180,7 @@ npm_package_exists() {
 }
 
 echo "Nvm use lts version of node..."
+nvm install --lts
 nvm use --lts
 
 # Array of npm packages to install
@@ -147,26 +211,12 @@ for package in "${packages[@]}"; do
     fi
 done
 
-echo "Upgrade python3 pip"
-pip3 install --upgrade pip
-
-echo "Install python language server pylsp"
-pip install -U 'python-lsp-server[all]'
-
 # Set fish as the default shell
 if [ "$SHELL" = "/usr/bin/fish" ]; then
     echo "Fish is already the default shell. Skipping setting default shell."
 else
     echo "Setting fish as the default shell..."
     chsh -s /usr/bin/fish
-fi
-
-# Install nvm from omf
-if omf list | grep -q nvm; then
-    echo "nvm is already installed in omf. Skipping omf nvm installation."
-else
-    echo "Installing nvm from omf..."
-    omf install nvm
 fi
 
 # Start Syncthing service
@@ -185,14 +235,6 @@ else
     systemctl --user enable syncthing
 fi
 
-# Install markdown language servers
-if snap list | grep -q marksman; then
-    echo "marksman is already installed. Skipping marksman installation."
-else
-    echo "Installing markdown language servers..."
-    sudo snap install marksman
-fi
-
 echo "Install ltex language server for spellcheck"
 if [ ! -d "/opt/ltex-ls" ]; then
     cd ~/Downloads
@@ -204,41 +246,6 @@ else
     echo "/opt/ltex-ls already exists. Skipping installation."
 fi
 
-echo "Checking if Docker Engine is already installed..."
-if ! command -v docker &> /dev/null; then
-    echo "Docker Engine not found. Proceeding with installation..."
-
-    echo "Uninstall old versions of Docker Engine"
-    sudo dnf remove -y docker \
-                      docker-client \
-                      docker-client-latest \
-                      docker-common \
-                      docker-latest \
-                      docker-latest-logrotate \
-                      docker-logrotate \
-                      docker-selinux \
-                      docker-engine-selinux \
-                      docker-engine
-
-    echo "Install Docker Engine"
-    sudo dnf -y install dnf-plugins-core
-    sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-    sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-    echo "Start Docker Engine"
-    sudo systemctl start docker
-
-    echo "Enable Docker to start on boot"
-    sudo systemctl enable docker
-
-    echo "Run hello-world image from Docker Engine"
-    sudo docker run hello-world
-
-    echo "Docker Engine installation and test completed."
-else
-    echo "Docker Engine is already installed. Skipping installation."
-fi
-
 # Check if phpactor is installed
 if command_exists phpactor; then
     echo "phpactor is already installed. Skipping installation."
@@ -247,9 +254,12 @@ else
     cd ~/Downloads
     curl -Lo phpactor.phar https://github.com/phpactor/phpactor/releases/latest/download/phpactor.phar
     chmod a+x phpactor.phar
+
+    # Ensure the target directory exists
+    if [ ! -d "$HOME/.local/bin" ]; then
+        mkdir -p "$HOME/.local/bin"
+    fi
     mv phpactor.phar ~/.local/bin/phpactor
-    phpactor status
 fi
 
-echo "Installation complete. Please restart your terminal."
-
+echo "Installation complete. Please restart your terminal. Don't forget to run `fisher install jorgebucaran/nvm.fish` to install nvm for fish shell."
