@@ -3,7 +3,8 @@ if status is-interactive
 
     # Set default editor to helix, eg. crontab -e
     set -gx EDITOR vim
-    alias hx='helix'
+    # Do not alias hx to helix except archlinux
+    # alias hx='helix'
 
     fish_add_path /usr/local/bin
     fish_add_path /usr/local/go/bin
