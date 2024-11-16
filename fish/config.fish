@@ -5,6 +5,15 @@ if status is-interactive
     set -gx EDITOR vim
     alias hx='helix'
 
+    # Start SSH Agent
+    # if not pgrep ssh-agent >/dev/null
+    #     eval (ssh-agent -c)
+    #     # Add SSH Key
+    #     if not ssh-add -l | grep -q quintessa-archlinux
+    #         ssh-add ~/.ssh/id_ed25519
+    #     end
+    # end
+
     fish_add_path /usr/local/bin
     fish_add_path /usr/local/go/bin
     fish_add_path /opt/godot/
