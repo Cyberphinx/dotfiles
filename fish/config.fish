@@ -27,6 +27,11 @@ if status is-interactive
     fish_add_path $HOME/.config/composer/vendor/bin
     fish_add_path ~/.composer/vendor/bin
 
+    # Language input settings
+    set -x GTK_IM_MODULE fcitx5
+    set -x QT_IM_MODULE fcitx5
+    set -x XMODIFIERS "@im=fcitx5"
+
     set -x DPRINT_INSTALL "$HOME/.dprint"
     set -x PATH "$DPRINT_INSTALL/bin" $PATH
     set -gx PATH $PATH /usr/bin/node
