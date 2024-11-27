@@ -11,7 +11,7 @@ opacity = 1
 [font]
 size = 15
 offset.x = 0
-offset.y = 3
+offset.y = 5
 normal = { family = "AnonymicePro Nerd Font Mono", style = "Regular" }
 bold = { family = "AnonymicePro Nerd Font Mono", style = "Bold" }
 italic = { family = "AnonymicePro Nerd Font Mono", style = "Italic" }
