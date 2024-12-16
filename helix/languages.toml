@@ -210,6 +210,7 @@ name = "typescript"
 language-servers = ["typescript-language-server", "eslint", "emmet-ls"]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "ts"] }
+# formatter = { command = "dprint", args = ["fmt", "--stdin", "typescript"] }
 auto-format = true
 
 [[language]]
@@ -254,7 +255,14 @@ auto-format = true
 [[language]]
 name = "css"
 language-servers = ["vscode-css-language-server", "emmet-ls", "tailwindcss-ls"]
-formatter = { command = 'prettier', args = ["--parser", "css"] }
+# formatter = { command = 'prettier', args = ["--parser", "css"] }
+formatter = { command = "dprint", args = [
+  "fmt",
+  "--stdin",
+  "css",
+  "--config",
+  "dprint.json",
+] }
 indent = { tab-width = 2, unit = "  " }
 auto-format = true
 
