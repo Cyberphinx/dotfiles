@@ -32,14 +32,18 @@ if status is-interactive
     set -x QT_IM_MODULE fcitx5
     set -x XMODIFIERS "@im=fcitx5"
 
-    set -x DPRINT_INSTALL "$HOME/.dprint"
-    set -x PATH "$DPRINT_INSTALL/bin" $PATH
+    # Language Server for coding
     set -gx PATH $PATH /usr/bin/node
     set -x PATH $PATH $HOME/go/bin
     set -gx PATH $HOME/.local/share/lua-language-server/bin $PATH
     set -gx PATH $PATH $HOME/.local/share/bob/nvim-bin
     set -x DENO_INSTALL $HOME/.deno
     set -x PATH $DENO_INSTALL/bin $PATH
+
+    # set the XDG environment variables in fish
+    set -Ux XDG_CONFIG_HOME $HOME/.config
+    set -Ux XDG_DATA_HOME $HOME/.local/share
+    set -Ux XDG_CACHE_HOME $HOME/.cache
 
     # Detect if running under Wayland or X11
     if test -n "$XDG_SESSION_TYPE"

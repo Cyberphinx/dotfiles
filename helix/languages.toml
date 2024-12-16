@@ -26,6 +26,13 @@ language-servers = ["svelteserver", "eslint", "emmet-ls", "tailwindcss-ls"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 roots = ["package.json"]
+formatter = { command = "dprint", args = [
+  "fmt",
+  "--stdin",
+  "svelte",
+  "--config",
+  "dprint.json",
+] }
 
 # --------------------------------------------------------------------------
 #                                PHP Settings
@@ -84,9 +91,15 @@ language-servers = [
   { name = "emmet-ls" },
 ]
 
+# --------------------------------------------------------------------------
+#                                Tailwind Settings
+# --------------------------------------------------------------------------
 [language-server.tailwindcss-ls]
 config = { userLanguages = { php = "html", "*.php" = "html" } }
 
+# --------------------------------------------------------------------------
+#                                Emmet LS Settings
+# --------------------------------------------------------------------------
 [language-server.emmet-ls]
 command = "emmet-ls"
 args = ["--stdio"]
@@ -109,7 +122,7 @@ run = "onType"
 # useESLintClass = false
 validate = "on"
 experimental = {}
-# codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
+codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
 problems = { shortenToSingleLine = false }
 # workingDirectory = { mode = "auto" }
 
@@ -138,13 +151,23 @@ provideFormatter = true
 # --------------------------------------------------------------------------
 [language-server.deno-lsp]
 command = "deno"
-args = ["lsp", "--unstable"]
+args = ["lsp"]
 
 [language-server.deno-lsp.config.deno]
 enable = true
 unstable = true
 lint = true
 suggest.imports.hosts = { "https://deno.land" = true }
+
+[language-server.deno-lsp.config.javascript]
+inlayHints.parameterNames.enabled = "all"
+inlayHints.parameterTypes.enabled = true
+inlayHints.variableTypes.enabled = true
+inlayHints.propertyDeclarationTypes.enabled = true
+inlayHints.functionLikeReturnTypes.enabled = true
+inlayHints.enumMemberValues.enabled = true
+
+[language-server.deno-lsp.config.typescript]
 inlayHints.parameterNames.enabled = "all"
 inlayHints.parameterTypes.enabled = true
 inlayHints.variableTypes.enabled = true
@@ -157,15 +180,7 @@ inlayHints.enumMemberValues.enabled = true
 # --------------------------------------------------------------------------
 [[language]]
 name = "javascript"
-language-id = "javascript"
-scope = "source.js"
-injection-regex = "^(js|javascript)$"
-file-types = ["js", "jsx", "mjs"]
-shebangs = ["deno", "node"]
-roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
-comment-token = "//"
 language-servers = [
-  # { name = "deno-lsp", except-features = ["diagnostics"] },
   # "deno-lsp",
   "typescript-language-server",
   "eslint",
@@ -173,57 +188,32 @@ language-servers = [
 ]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "js"] }
+# formatter = { command = "dprint", args = ["fmt", "--stdin", "javascript"] }
 auto-format = true
 
 [[language]]
 name = "jsx"
-language-id = "javascriptreact"
-scope = "source.jsx"
-injection-regex = "jsx"
-file-types = ["jsx"]
-shebangs = ["deno", "node"]
-roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
-comment-token = "//"
 language-servers = [
-  # { name = "deno-lsp", except-features = ["diagnostics"] },
-  #"deno-lsp", 
+  # "deno-lsp", 
   "typescript-language-server",
   "eslint",
-  { name = "emmet-ls", except-features = ["code-action"] },
+  "emmet-ls",
   "tailwindcss-ls",
 ]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "jsx"] }
+# formatter = { command = "dprint", args = ["fmt", "--stdin", "jsx"] }
 auto-format = true
 
 [[language]]
 name = "typescript"
-language-id = "typescript"
-scope = "source.ts"
-injection-regex = "^(ts|typescript)$"
-file-types = ["ts"]
-shebangs = ["deno", "node"]
-roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
-comment-token = "//"
-language-servers = [
-  # "deno-lsp",
-  "typescript-language-server",
-  "eslint",
-  "emmet-ls",
-]
+language-servers = ["typescript-language-server", "eslint", "emmet-ls"]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "ts"] }
 auto-format = true
 
 [[language]]
 name = "tsx"
-language-id = "typescriptreact"
-scope = "source.tsx"
-injection-regex = "^(tsx)$"
-file-types = ["tsx"]
-shebangs = ["deno", "node"]
-roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
-comment-token = "//"
 language-servers = [
   #"deno-lsp", 
   "typescript-language-server",
@@ -233,6 +223,7 @@ language-servers = [
 ]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "tsx"] }
+# formatter = { command = "dprint", args = ["fmt", "--stdin", "tsx"] }
 auto-format = true
 
 # --------------------------------------------------------------------------
@@ -242,6 +233,7 @@ auto-format = true
 name = "json"
 file-types = ["json"]
 formatter = { command = "deno", args = ["fmt", "--ext", "json", "-"] }
+# formatter = { command = "dprint", args = ["fmt", "--stdin", "json"] }
 indent = { tab-width = 2, unit = "  " }
 auto-format = true
 

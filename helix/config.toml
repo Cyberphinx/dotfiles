@@ -62,6 +62,7 @@ skip-levels = 0
 [editor.soft-wrap]
 enable = true
 
+# Saves on Esc key
 [keys.normal]
 "esc" = ["collapse_selection", ":w"]
 [keys.select]
