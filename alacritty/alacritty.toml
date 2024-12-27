@@ -1,4 +1,5 @@
-general.import = ["~/.config/alacritty/themes/themes/rose-pine.toml"]
+[general]
+import = ["~/.config/alacritty/themes/themes/rose_pine.toml"]
 
 [env]
 # to be compatible with legacy machines
