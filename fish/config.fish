@@ -1,18 +1,20 @@
+# Unset the default fish greeting text which messes up Zellij
+set fish_greeting
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
+
+    # Launch Zellij in ghostty
+    export ZELLIJ_CONFIG_DIR=$HOME/.config/zellij
+    # Check if our Terminal emulator is Ghostty
+    if [ "$TERM" = xterm-ghostty ]
+        # Launch Zellij
+        eval (zellij setup --generate-auto-start fish | string collect)
+    end
 
     # Set default editor to helix, eg. crontab -e
     set -gx EDITOR vim
     alias hx='helix'
-
-    # Start SSH Agent
-    # if not pgrep ssh-agent >/dev/null
-    #     eval (ssh-agent -c)
-    #     # Add SSH Key
-    #     if not ssh-add -l | grep -q quintessa-archlinux
-    #         ssh-add ~/.ssh/id_ed25519
-    #     end
-    # end
 
     fish_add_path /usr/local/bin
     fish_add_path /usr/local/go/bin
