@@ -13,6 +13,14 @@ cursorline = true
 true-color = true
 color-modes = true
 insert-final-newline = false
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+# Minimum severity to show a diagnostic on the primary cursor's line.
+# Note that `cursor-line` diagnostics are hidden in insert mode.
+cursor-line = "error"
+# Minimum severity to show a diagnostic on other lines:
+# other-lines = "error"
 
 [editor.cursor-shape]
 insert = "bar"
@@ -44,6 +52,12 @@ display-messages = true
 
 [keys.normal.space]
 i = ":toggle lsp.display-inlay-hints"
+# Yank diagnostic(s) under primary cursor to register, or clipboard by default
+z = ":yank-diagnostic"
+# Toggle inline diagnostics for the cursor line
+l = ":toggle inline-diagnostics.cursor-line disable error"
+# Toggle end-of-line diagnostics
+e = ":toggle end-of-line-diagnostics disable hint"
 
 [editor.whitespace.render]
 space = "all"

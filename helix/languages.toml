@@ -33,6 +33,7 @@ formatter = { command = "dprint", args = [
   "--config",
   "dprint.json",
 ] }
+block-comment-tokens = { start = "//", end = "" }
 
 # --------------------------------------------------------------------------
 #                                PHP Settings
