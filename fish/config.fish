@@ -4,13 +4,14 @@ set fish_greeting
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
+    # Use ghostty's native panes and tabs may render zellij redundant!
     # Launch Zellij in ghostty
-    export ZELLIJ_CONFIG_DIR=$HOME/.config/zellij
-    # Check if our Terminal emulator is Ghostty
-    if [ "$TERM" = xterm-ghostty ]
-        # Launch Zellij
-        eval (zellij setup --generate-auto-start fish | string collect)
-    end
+    # export ZELLIJ_CONFIG_DIR=$HOME/.config/zellij
+    # # Check if our Terminal emulator is Ghostty
+    # if [ "$TERM" = xterm-ghostty ]
+    #     # Launch Zellij
+    #     eval (zellij setup --generate-auto-start fish | string collect)
+    # end
 
     # Set default editor to helix, eg. crontab -e
     set -gx EDITOR vim
