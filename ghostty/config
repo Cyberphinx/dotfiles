@@ -9,6 +9,7 @@ keybind = alt+n=new_tab
 keybind = alt+h=previous_tab
 keybind = alt+l=next_tab
 keybind = f11=toggle_window_decorations
+keybind = f12=toggle_fullscreen
 
 keybind = alt+shift+h=goto_split:left
 keybind = alt+shift+l=goto_split:right
