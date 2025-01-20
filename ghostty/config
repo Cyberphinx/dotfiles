@@ -9,3 +9,5 @@ keybind = alt+n=new_tab
 keybind = alt+h=previous_tab
 keybind = alt+l=next_tab
 keybind = f11=toggle_window_decorations
+
+term = xterm-256color
