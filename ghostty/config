@@ -13,4 +13,7 @@ keybind = f11=toggle_window_decorations
 keybind = alt+shift+h=goto_split:left
 keybind = alt+shift+l=goto_split:right
 
+keybind = alt+i=move_tab:-1
+keybind = alt+o=move_tab:+1
+
 term = xterm-256color
