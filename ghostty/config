@@ -10,4 +10,7 @@ keybind = alt+h=previous_tab
 keybind = alt+l=next_tab
 keybind = f11=toggle_window_decorations
 
+keybind = alt+shift+h=goto_split:left
+keybind = alt+shift+l=goto_split:right
+
 term = xterm-256color
