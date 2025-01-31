@@ -24,6 +24,6 @@ bindings = [{ key = "F11", action = "ToggleFullscreen" }]
 style = { shape = "Beam", blinking = "On" }
 vi_mode_style = { shape = "Block", blinking = "Off" }
 
-[terminal.shell]
-program = "zellij"
-args = ["-l", "welcome"]
+# [terminal.shell]
+# program = "zellij"
+# args = ["-l", "welcome"]
