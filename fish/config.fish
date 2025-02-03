@@ -1,6 +1,10 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
+    function fish_user_env
+        set -gx TERM xterm-256color
+    end
+
     # Set default editor to helix, eg. crontab -e
     set -gx EDITOR vim
     # Do not alias hx to helix except archlinux
