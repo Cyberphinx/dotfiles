@@ -8,12 +8,6 @@
   "json": {
     "indentWidth": 2
   },
-  "svelte": {
-    "indentWidth": 2
-  },
-  "css": {
-    "indentWidth": 2
-  },
   "excludes": [
     "**/*-lock.json"
   ],
