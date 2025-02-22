@@ -26,13 +26,7 @@ language-servers = ["svelteserver", "eslint", "emmet-ls", "tailwindcss-ls"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 roots = ["package.json"]
-formatter = { command = "dprint", args = [
-  "fmt",
-  "--stdin",
-  "svelte",
-  "--config",
-  "dprint.json",
-] }
+formatter = { command = "dprint", args = ["fmt", "--stdin", "svelte"] }
 block-comment-tokens = { start = "//", end = "" }
 
 # --------------------------------------------------------------------------
