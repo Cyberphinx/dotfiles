@@ -4,15 +4,6 @@ set fish_greeting
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
-    # Use ghostty's native panes and tabs may render zellij redundant!
-    # Launch Zellij in ghostty
-    # export ZELLIJ_CONFIG_DIR=$HOME/.config/zellij
-    # # Check if our Terminal emulator is Ghostty
-    # if [ "$TERM" = xterm-ghostty ]
-    #     # Launch Zellij
-    #     eval (zellij setup --generate-auto-start fish | string collect)
-    # end
-
     # Set default editor to helix, eg. crontab -e
     set -gx EDITOR vim
     alias hx='helix'
@@ -47,24 +38,4 @@ if status is-interactive
     set -Ux XDG_CONFIG_HOME $HOME/.config
     set -Ux XDG_DATA_HOME $HOME/.local/share
     set -Ux XDG_CACHE_HOME $HOME/.cache
-
-    # Detect if running under Wayland or X11
-    if test -n "$XDG_SESSION_TYPE"
-        switch $XDG_SESSION_TYPE
-            case wayland
-                # Define alias for Wayland
-                alias p="pass show ldapass | wl-copy"
-                alias s="pass show sdxpass | wl-copy"
-            case x11
-                # Define alias for X11
-                alias p="pass show ldapass | xclip -selection clipboard"
-                alias s="pass show sdxpass | xclip -selection clipboard"
-        end
-    else
-        echo "Could not determine display server."
-    end
-
-    # Start starship shell prompt
-    starship init fish | source
-
 end
